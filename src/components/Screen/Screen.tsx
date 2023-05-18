@@ -1,8 +1,8 @@
-import {FC} from "react";
-import {useSelector} from "react-redux";
+import { FC } from 'react';
+import { useSelector } from 'react-redux';
 
-import style from "./Screen.module.scss";
-import {RootState} from "../../stores/store";
+import style from './Screen.module.scss';
+import { RootState } from '../../stores/store';
 
 interface ScreenProps {}
 

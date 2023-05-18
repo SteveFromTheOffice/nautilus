@@ -1,7 +1,7 @@
-import {createSlice} from "@reduxjs/toolkit";
-import type {PayloadAction} from "@reduxjs/toolkit";
-import {evaluate} from "mathjs";
-import {parseEquation} from "../util/calculator";
+import { createSlice } from '@reduxjs/toolkit';
+import type { PayloadAction } from '@reduxjs/toolkit';
+import { evaluate } from 'mathjs';
+import { parseEquation } from '../util/calculator';
 
 export interface CalculatorState {
   equation: string;
@@ -10,20 +10,20 @@ export interface CalculatorState {
 }
 
 const initialState: CalculatorState = {
-  equation: "",
-  result: "",
+  equation: '',
+  result: '',
   history: [],
 };
 
 export const calculatorSlice = createSlice({
-  name: "calculator",
+  name: 'calculator',
   initialState,
   reducers: {
     appendEquation: (state, action: PayloadAction<string>) => {
       const numberOrDecimal = /^\d+(\.\d+)?$/;
 
       // Bring the previous result to the equation.
-      if (state.result !== "" && state.equation === "" && !numberOrDecimal.test(action.payload)) {
+      if (state.result !== '' && state.equation === '' && !numberOrDecimal.test(action.payload)) {
         state.equation = state.result;
       }
 
@@ -34,7 +34,7 @@ export const calculatorSlice = createSlice({
       state.equation = state.equation.slice(0, -1);
     },
     calculate: (state) => {
-      if (state.equation === "") return;
+      if (state.equation === '') return;
 
       const equation = parseEquation(state.equation);
       const result = evaluate(equation).toString();
@@ -46,11 +46,11 @@ export const calculatorSlice = createSlice({
         result: result,
       });
 
-      state.equation = "";
+      state.equation = '';
     },
     clear: (state) => {
-      state.equation = "";
-      state.result = "";
+      state.equation = '';
+      state.result = '';
       state.history = [];
     },
     flipSign: (state) => {
