@@ -2,7 +2,6 @@ import {createSlice} from "@reduxjs/toolkit";
 import type {PayloadAction} from "@reduxjs/toolkit";
 import {evaluate} from "mathjs";
 import {parseEquation} from "../util/calculator";
-import HistoryItem from "../types/HistoryItem";
 
 export interface CalculatorState {
   equation: string;
