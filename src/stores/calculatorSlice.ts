@@ -34,23 +34,27 @@ export const calculatorSlice = createSlice({
       state.equation = state.equation.slice(0, -1);
     },
     calculate: (state) => {
-      if (state.equation === '') return;
+      try {
+        if (state.equation === '') return;
 
-      const equation = parseEquation(state.equation);
-      const result = evaluate(equation).toString();
+        const equation = parseEquation(state.equation);
+        const result = evaluate(equation).toString();
 
-      // Check for decimals.
-      const resultFixed = decimalPlaceLength(result, 4);
+        // Check for decimals.
+        const resultFixed = decimalPlaceLength(result, 4);
 
-      state.result = resultFixed;
+        // Update history.
+        state.history.push({
+          equation: state.equation,
+          result: resultFixed,
+        });
 
-      // Update history.
-      state.history.push({
-        equation: state.equation,
-        result: resultFixed,
-      });
-
-      state.equation = '';
+        state.result = resultFixed;
+        state.equation = '';
+      } catch (error) {
+        state.result = 'ERROR';
+        state.equation = '';
+      }
     },
     clear: (state) => {
       state.equation = '';
