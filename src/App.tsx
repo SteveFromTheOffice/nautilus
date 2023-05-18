@@ -1,8 +1,8 @@
 import Layout from './components/Layout/Layout';
+import Screen from './components/Screen/Screen';
 import Calculator from './components/Calculator/Calculator';
 
 import './globals.css';
-import Screen from './components/Screen/Screen';
 
 function App() {
   return (

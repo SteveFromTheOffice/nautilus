@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 import type { PayloadAction } from '@reduxjs/toolkit';
 import { evaluate } from 'mathjs';
-import { parseEquation } from '../util/calculator';
+import { decimalPlaceLength, parseEquation } from '../util/calculator';
 
 export interface CalculatorState {
   equation: string;
@@ -38,12 +38,16 @@ export const calculatorSlice = createSlice({
 
       const equation = parseEquation(state.equation);
       const result = evaluate(equation).toString();
-      state.result = result;
+
+      // Check for decimals.
+      const resultFixed = decimalPlaceLength(result, 4);
+
+      state.result = resultFixed;
 
       // Update history.
       state.history.push({
         equation: state.equation,
-        result: result,
+        result: resultFixed,
       });
 
       state.equation = '';
