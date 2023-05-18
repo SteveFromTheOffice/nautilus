@@ -62,15 +62,26 @@ export const calculatorSlice = createSlice({
       state.history = [];
     },
     flipSign: (state) => {
-      state.result = (parseFloat(state.result) * -1).toString();
+      if (state.result === '') return;
+
+      const result = evaluate(`(${state.result}) * -1`).toString();
+      state.result = result;
+
+      // Update history.
+      state.history.push({
+        equation: `(${state.result}) * -1`,
+        result: result,
+      });
     },
     percent: (state) => {
+      if (state.result === '') return;
+
       const result = evaluate(`(${state.result}) / 100`).toString();
       state.result = result;
 
       // Update history.
       state.history.push({
-        equation: state.equation,
+        equation: `(${state.result}) / 100`,
         result: result,
       });
     },
