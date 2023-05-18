@@ -1,0 +1,12 @@
+.calculator {
+  background-color: #171717;
+  display: grid;
+  flex-wrap: wrap;
+  gap: 1px;
+  grid-area: calc;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  height: 100%;
+  justify-content: space-between;
+  padding: 1px;
+  width: 100%;
+}

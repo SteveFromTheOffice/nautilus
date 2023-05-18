@@ -1,0 +1,18 @@
+.screen {
+  display: flex;
+  flex-direction: column;
+  grid-area: screen;
+  justify-content: space-around;
+  text-align: right;
+  flex-grow: 0;
+  overflow: hidden;
+
+  .equation {
+    color: #aaa;
+  }
+
+  .result {
+    color: #fff;
+    font-size: 50px;
+  }
+}
