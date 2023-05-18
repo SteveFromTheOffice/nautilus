@@ -19,9 +19,6 @@ export const calculatorSlice = createSlice({
   name: "calculator",
   initialState,
   reducers: {
-    addHistory: (state, action: PayloadAction<{equation: string; result: string}>) => {
-      state.history.push(action.payload);
-    },
     appendEquation: (state, action: PayloadAction<string>) => {
       const numberOrDecimal = /^\d+(\.\d+)?$/;
 

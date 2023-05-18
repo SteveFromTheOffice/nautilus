@@ -8,6 +8,7 @@ export function decimalPlaceLength(equation: string) {
   return decimalPart.length;
 }
 
+/** Parses the screen string to a format safe for mathjs.evaluate. */
 export function parseEquation(equation: string) {
   let result = equation;
   result = result.replaceAll("×", "*");
