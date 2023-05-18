@@ -2,13 +2,13 @@ import {FC, HTMLAttributes} from "react";
 
 import style from "./Button.module.scss";
 
-interface ButtonProps extends HTMLAttributes<HTMLButtonElement> {
+export interface ButtonProps extends HTMLAttributes<HTMLButtonElement> {
   value: string;
 }
 
-const Button: FC<ButtonProps> = ({onClick, value}) => {
+const Button: FC<ButtonProps> = ({className, onClick, value}) => {
   return (
-    <button className={style.button} onClick={onClick}>
+    <button className={`${style.button} ${className}`} onClick={onClick}>
       {value}
     </button>
   );

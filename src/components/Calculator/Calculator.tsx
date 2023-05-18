@@ -2,7 +2,8 @@ import {FC} from "react";
 import {useDispatch} from "react-redux";
 import {Actions as CalculatorActions} from "../../stores/calculatorSlice";
 
-import Button from "../Button/Button";
+import FunctionButton from "../FunctionButton/FunctionButton";
+import NumberButton from "../NumberButton/NumberButton";
 
 import style from "./Calculator.module.scss";
 
@@ -13,30 +14,30 @@ const Calculator: FC<CalculatorProps> = () => {
 
   return (
     <div className={style.calculator}>
-      <Button value="C" onClick={() => dispatch(CalculatorActions.clear())} />
-      <Button value="⌫" onClick={() => dispatch(CalculatorActions.backspace())} />
-      <Button value="%" onClick={() => dispatch(CalculatorActions.percent())} />
-      <Button value="÷" onClick={() => dispatch(CalculatorActions.appendEquation(" ÷ "))} />
+      <FunctionButton value="C" onClick={() => dispatch(CalculatorActions.clear())} />
+      <FunctionButton value="⌫" onClick={() => dispatch(CalculatorActions.backspace())} />
+      <FunctionButton value="%" onClick={() => dispatch(CalculatorActions.percent())} />
+      <FunctionButton value="÷" onClick={() => dispatch(CalculatorActions.appendEquation(" ÷ "))} />
 
-      <Button value="7" onClick={() => dispatch(CalculatorActions.appendEquation("7"))} />
-      <Button value="8" onClick={() => dispatch(CalculatorActions.appendEquation("8"))} />
-      <Button value="9" onClick={() => dispatch(CalculatorActions.appendEquation("9"))} />
-      <Button value="×" onClick={() => dispatch(CalculatorActions.appendEquation(" × "))} />
+      <NumberButton value="7" onClick={() => dispatch(CalculatorActions.appendEquation("7"))} />
+      <NumberButton value="8" onClick={() => dispatch(CalculatorActions.appendEquation("8"))} />
+      <NumberButton value="9" onClick={() => dispatch(CalculatorActions.appendEquation("9"))} />
+      <FunctionButton value="×" onClick={() => dispatch(CalculatorActions.appendEquation(" × "))} />
 
-      <Button value="4" onClick={() => dispatch(CalculatorActions.appendEquation("4"))} />
-      <Button value="5" onClick={() => dispatch(CalculatorActions.appendEquation("5"))} />
-      <Button value="6" onClick={() => dispatch(CalculatorActions.appendEquation("6"))} />
-      <Button value="-" onClick={() => dispatch(CalculatorActions.appendEquation(" - "))} />
+      <NumberButton value="4" onClick={() => dispatch(CalculatorActions.appendEquation("4"))} />
+      <NumberButton value="5" onClick={() => dispatch(CalculatorActions.appendEquation("5"))} />
+      <NumberButton value="6" onClick={() => dispatch(CalculatorActions.appendEquation("6"))} />
+      <FunctionButton value="-" onClick={() => dispatch(CalculatorActions.appendEquation(" - "))} />
 
-      <Button value="1" onClick={() => dispatch(CalculatorActions.appendEquation("1"))} />
-      <Button value="2" onClick={() => dispatch(CalculatorActions.appendEquation("2"))} />
-      <Button value="3" onClick={() => dispatch(CalculatorActions.appendEquation("3"))} />
-      <Button value="+" onClick={() => dispatch(CalculatorActions.appendEquation(" + "))} />
+      <NumberButton value="1" onClick={() => dispatch(CalculatorActions.appendEquation("1"))} />
+      <NumberButton value="2" onClick={() => dispatch(CalculatorActions.appendEquation("2"))} />
+      <NumberButton value="3" onClick={() => dispatch(CalculatorActions.appendEquation("3"))} />
+      <FunctionButton value="+" onClick={() => dispatch(CalculatorActions.appendEquation(" + "))} />
 
-      <Button value="±" onClick={() => dispatch(CalculatorActions.flipSign())} />
-      <Button value="0" onClick={() => dispatch(CalculatorActions.appendEquation("0"))} />
-      <Button value="." onClick={() => dispatch(CalculatorActions.appendEquation("."))} />
-      <Button value="=" onClick={() => dispatch(CalculatorActions.calculate())} />
+      <FunctionButton value="±" onClick={() => dispatch(CalculatorActions.flipSign())} />
+      <NumberButton value="0" onClick={() => dispatch(CalculatorActions.appendEquation("0"))} />
+      <NumberButton value="." onClick={() => dispatch(CalculatorActions.appendEquation("."))} />
+      <FunctionButton value="=" onClick={() => dispatch(CalculatorActions.calculate())} />
     </div>
   );
 };
