@@ -1,6 +1,6 @@
 import { FC } from 'react';
 
-import { RootState } from '../../stores/store';
+import { AppDispatch, RootState } from '../../stores/store';
 import { useDispatch, useSelector } from 'react-redux';
 import { Actions as CalculatorActions } from '../../stores/calculatorSlice';
 
@@ -13,7 +13,7 @@ import { fetchBitcoinPrice } from '../../actions/calculator/fetchBitcoinPrice';
 interface CalculatorProps {}
 
 const Calculator: FC<CalculatorProps> = () => {
-  const dispatch = useDispatch();
+  const dispatch: AppDispatch = useDispatch();
   const isBitcoin = useSelector((state: RootState) => state.calculator.bitcoin);
 
   const btcString = !isBitcoin ? 'BTC' : 'CAD';
@@ -23,7 +23,7 @@ const Calculator: FC<CalculatorProps> = () => {
       {/* Developer note: While this could be mapped, the buttons are not currently dynamic, 
       and it was actually a little harder to read intuitively so it didn't seem nessesary. */}
       <FunctionButton value="C" onClick={() => dispatch(CalculatorActions.clear())} />
-      <FunctionButton value={btcString} onClick={() => dispatch(fetchBitcoinPrice() as any)} />
+      <FunctionButton value={btcString} onClick={() => dispatch(fetchBitcoinPrice())} />
       <FunctionButton value="%" onClick={() => dispatch(CalculatorActions.percent())} />
       <FunctionButton value="÷" onClick={() => dispatch(CalculatorActions.appendEquation(' ÷ '))} />
 
