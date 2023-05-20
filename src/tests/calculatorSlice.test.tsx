@@ -5,6 +5,7 @@ import calculatorSlice, { Actions } from '../stores/calculatorSlice';
 describe('calculatorSlice', () => {
   it('should return the initial state', () => {
     expect(calculatorSlice(undefined, { type: undefined })).toEqual({
+      bitcoin: false,
       equation: '',
       result: '',
       history: [],
@@ -13,12 +14,14 @@ describe('calculatorSlice', () => {
 
   it('should handle addition', () => {
     const initialState = {
+      bitcoin: false,
       equation: '1+1',
       result: '',
       history: [],
     };
 
     const expectedState = {
+      bitcoin: false,
       equation: '',
       result: '2',
       history: [{ equation: '1+1', result: '2' }],
@@ -31,12 +34,14 @@ describe('calculatorSlice', () => {
 
   it('should handle subtraction', () => {
     const initialState = {
+      bitcoin: false,
       equation: '2-1',
       result: '',
       history: [],
     };
 
     const expectedState = {
+      bitcoin: false,
       equation: '',
       result: '1',
       history: [{ equation: '2-1', result: '1' }],
@@ -49,12 +54,14 @@ describe('calculatorSlice', () => {
 
   it('should handle multiplication', () => {
     const initialState = {
+      bitcoin: false,
       equation: '2 × 2',
       result: '',
       history: [],
     };
 
     const expectedState = {
+      bitcoin: false,
       equation: '',
       result: '4',
       history: [{ equation: '2 × 2', result: '4' }],
@@ -67,12 +74,14 @@ describe('calculatorSlice', () => {
 
   it('should handle division', () => {
     const initialState = {
+      bitcoin: false,
       equation: '4 ÷ 2',
       result: '',
       history: [],
     };
 
     const expectedState = {
+      bitcoin: false,
       equation: '',
       result: '2',
       history: [{ equation: '4 ÷ 2', result: '2' }],
@@ -85,6 +94,7 @@ describe('calculatorSlice', () => {
 
   it('should handle chaining', () => {
     const expectedState = {
+      bitcoin: false,
       equation: '',
       result: '2',
       history: [

@@ -2,14 +2,17 @@ import { createSlice } from '@reduxjs/toolkit';
 import type { PayloadAction } from '@reduxjs/toolkit';
 import { evaluate } from 'mathjs';
 import { decimalPlaceLength, parseEquation } from '../util/calculator';
+import { fetchBitcoinPrice } from '../actions/calculator/fetchBitcoinPrice';
 
 export interface CalculatorState {
+  bitcoin: boolean;
   equation: string;
   result: string;
   history: HistoryItem[];
 }
 
 const initialState: CalculatorState = {
+  bitcoin: false,
   equation: '',
   result: '',
   history: [],
@@ -85,6 +88,19 @@ export const calculatorSlice = createSlice({
         result: result,
       });
     },
+  },
+  extraReducers: (builder) => {
+    builder.addCase(fetchBitcoinPrice.fulfilled, (state, action) => {
+      const cadValue = action.payload.cad;
+
+      if (!state.bitcoin) {
+        state.result = evaluate(`${state.result} * ${cadValue}`);
+      } else {
+        state.result = evaluate(`${state.result} / ${cadValue}`);
+      }
+
+      state.bitcoin = !state.bitcoin;
+    });
   },
 });
 

@@ -1,23 +1,29 @@
 import { FC } from 'react';
-import { useDispatch } from 'react-redux';
+
+import { RootState } from '../../stores/store';
+import { useDispatch, useSelector } from 'react-redux';
 import { Actions as CalculatorActions } from '../../stores/calculatorSlice';
 
 import FunctionButton from '../FunctionButton/FunctionButton';
 import NumberButton from '../NumberButton/NumberButton';
 
 import style from './Calculator.module.scss';
+import { fetchBitcoinPrice } from '../../actions/calculator/fetchBitcoinPrice';
 
 interface CalculatorProps {}
 
 const Calculator: FC<CalculatorProps> = () => {
   const dispatch = useDispatch();
+  const isBitcoin = useSelector((state: RootState) => state.calculator.bitcoin);
+
+  const btcString = !isBitcoin ? 'BTC' : 'CAD';
 
   return (
     <div className={style.calculator}>
       {/* Developer note: While this could be mapped, the buttons are not currently dynamic, 
       and it was actually a little harder to read intuitively so it didn't seem nessesary. */}
       <FunctionButton value="C" onClick={() => dispatch(CalculatorActions.clear())} />
-      <FunctionButton value="⌫" onClick={() => dispatch(CalculatorActions.backspace())} />
+      <FunctionButton value={btcString} onClick={() => dispatch(fetchBitcoinPrice() as any)} />
       <FunctionButton value="%" onClick={() => dispatch(CalculatorActions.percent())} />
       <FunctionButton value="÷" onClick={() => dispatch(CalculatorActions.appendEquation(' ÷ '))} />
 

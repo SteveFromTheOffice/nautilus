@@ -14,7 +14,7 @@ export function hasRepeatingDecimals(result: string) {
   const dividend = Math.floor(resultNumber);
   const divisor = 1;
   const maxIterations = 100; // Maximum number of iterations to prevent infinite loops
-  let quotient = dividend / divisor;
+  //let quotient = dividend / divisor;
   let remainder = dividend % divisor;
   let remainders = new Set();
 
@@ -23,7 +23,7 @@ export function hasRepeatingDecimals(result: string) {
       return false; // Non-repeating decimal
     }
 
-    quotient = Math.floor((remainder * 10) / divisor);
+    //quotient = Math.floor((remainder * 10) / divisor);
     remainder = (remainder * 10) % divisor;
 
     if (remainders.has(remainder)) {
